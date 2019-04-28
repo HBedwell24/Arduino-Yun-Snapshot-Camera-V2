@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Facial Recognition Web Enabled Camera</title>
+    <link rel = "stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity = "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel = "stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity = "sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<style type='text/css'>
+	
+		body, html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background-image: url("img/background.jpg") !important;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		
+		.user_card {
+			height: 400px;
+			width: 600px;
+			z-index: 15;
+			top: 50%;
+			left: 50%;
+			margin: -200px 0 0 -300px;
+			background: #ffffff;
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 30px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+		}
+		
+		.button_container {
+			margin-top: 40px;
+			margin-left: 40px;
+			margin-right: 40px;
+		}
+		
+		.action_btn {
+			width: 100%;
+			background: #4B71BA !important;
+			color: white !important;
+		}
+		
+		.action_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		
+	</style>
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  </head>
+	  <body>     
+		<div class="container" style="display: flex; justify-content: center; align-items: center;">
+			<div class="user_card">
+				<h1>Facial Recognition Web Enabled Camera</h1>
+				<p>Welcome to the Control Panel! To get started, move the slider to the desired position, and watch the camera's field of view change in response!</p>
+				<div class="row">
+					<div class="col text-left">
+						<div class="input-block">
+							<p>X-Servo Position: <span id="servoPos"></span>°</p>
+							<input type="range" id="servo1Angle" min="0" max="180" value="90" step="1" />
+						</div>
+						<div class="input-block">
+							<p>Y-Servo Position: <span id="servoPos2"></span>°</p>
+							<input type="range" id="servo2Angle" min="105" max="180" value="180" step="1" />
+						</div>
+					</div>
+					<div class="col text-left">
+						<iframe src="//iframe.dacast.com/b/126650/c/496288" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+					</div>
+				</div>
+			</div>	 
+		</div>
+		
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script>
+		
+			var slider = document.getElementById("servo1Angle");
+			var servoP = document.getElementById("servoPos");
+			servoP.innerHTML = slider.value;
+			
+			var slider2 = document.getElementById("servo2Angle");
+			var servoP2 = document.getElementById("servoPos2");
+			servoP2.innerHTML = slider2.value;
+			
+			slider.oninput = function() {
+				slider.value = this.value;
+				servoP.innerHTML = this.value;
+			}
+			
+			slider2.oninput = function() {
+				slider2.value = this.value;
+				servoP2.innerHTML = this.value;
+			}
+			
+			$(document).ready(function () {
+
+			  var $servo1Angle = $("#servo1Angle");
+			  var $servo2Angle = $("#servo2Angle");
+
+			  // POST data needs to be included in the url string since bridge
+			  // does not currently parse the request body for data
+			  function setServoAngle(id, angle) {
+				var request = $.ajax({
+				  type: "POST",
+				  url: "/arduino/servos/" + id + "/angle/" + angle
+				});
+
+				request.done(function (msg) {
+				  console.log(msg);
+				});
+
+				request.fail(function (jqXHR, textStatus) {
+				  console.log("Request failed: " + textStatus);
+				});
+			  }
+
+			  $servo1Angle.on('change', function (e) {
+				setServoAngle(1, $(this).val());
+			  });
+
+			  $servo2Angle.on('change', function (e) {
+				setServoAngle(2, $(this).val());
+			  });
+
+			});
+		</script>
+	  </body>
+	</html>
