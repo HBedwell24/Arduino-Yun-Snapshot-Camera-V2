@@ -45,7 +45,7 @@ Device Construction
 ------------------------------------------------------------
 It is at this point that the construction of the device can begin to occur.  Using the libraries that were available within the Fritzing application, an illustration was created (as seen below) to elaborate on some of the connections between the breadboard and the various components of the device (including the servos of the Lynxmotion pan tilt kit, the Arduino Yun itself, and the 5V battery pack). Not pictured are the Logitech C270 web camera and the PIR motion sensor, which were excluded for the reason that libraries did not exist for these parts. However, to connect these two entities, one only needs to plug the USB camera into the USB slot located on the Arduino, and connect digital pin 7 to the OUT pin on the PIR motion sensor, with GND  going to GND, and 5V to VCC. For the battery pack, make sure to use 4 AA rechargeable batteries, since alkaline batteries will push the voltage amount to an intolerable level. Once this has been accomplished, one can optionally mount the components down to a board for transportation, though this is not something that is required.
 
-![Fritzing Diagram](fritzing-diagram.png?raw=true "Facial Recognition Web Enabled Camera Wiring Diagram")
+![Fritzing Diagram](arduino/www/img/fritzing-diagram.png?raw=true "Facial Recognition Web Enabled Camera Wiring Diagram")
 
 Adding Cloud Functionality (feat. @rwchinn)
 ------------------------------------------------------------
