@@ -47,7 +47,7 @@ It is at this point that the construction of the device can begin to occur.  Usi
 
 ![Fritzing Diagram](fritzing-diagram.png?raw=true "Facial Recognition Web Enabled Camera Wiring Diagram")
 
-Adding Cloud Functionality (feat @rwchinn)
+Adding Cloud Functionality (feat. @rwchinn)
 ------------------------------------------------------------
 
 To configure the device to operate within a cloud environment (in this case, we chose Amazon Web Services), the following commands were utilized in order to ensure ends were met.
@@ -104,14 +104,5 @@ aws rekognition delete-faces --collection-id "collectionid" --face-ids '["fa8f30
 Wrapping It Up
 -----------------------------------------------------------------
 Though this is only the penultimate step to having the device completely set up, much of the work with regards to the device has already been completed as of this point. In order to see the device in action, simply open up a window in Arduino IDE, and paste the code from sketch.ino in. To guarantee that the imports are fully functional, make sure to have the Temboo Python SDK stored on the root of the SD card (along with ‘upload_picture.py’), before transferring it over to the board. One will also need to have possession of a Temboo account, for the reason that this service is used in order to facilitate the image upload process. The parameters specified to upload_picture.py will vary with respect to what AWS/Temboo account one is on, and hence, have been left as variables for the user to fill in. Furthermore, to satisfy the requirement of making the device web functional, one will also be required to make a folder on the root of the SD card called ‘arduino’, with an inner folder, labeled ‘www’ (where the html file ‘index.html’ will then reside). Once the above conditions have been met, ensure that the correct microcontroller and port are selected under the tools menu, place the microSD card back into the microcontroller, and then proceed to verify/upload the sketch.
-
-
-Source Code
---------------------------------------------------------------
-To operate the device under it's new configuration:
-1. The updated .ino file found above within the 'snapshotCamera' folder needs to be uploaded to the Arduino, which will allow for it to listen in on incoming motion data, as well as any data sent through the client via the web server hosted on the Yun itself.
-2. In addition, a new folder (designated 'www') needs to be added to the root of the microSD card. This folder will contain an additional folder named 'arduino', which will in turn hold the .html file fundamental to hosting the web server abroad on the public Internet.
-
-NOTE: It is also worth mentioning that 'upload_picture.py' and the Temboo Python SDK (https://temboo.com/python) have both been left as before, so no change is required in order to ensure adequate compliance with the rest of the source code.
 
 
