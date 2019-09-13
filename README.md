@@ -47,20 +47,23 @@ It is at this point that the construction of the device can begin to occur.  Usi
 
 ![Fritzing Diagram](fritzing-diagram.png?raw=true "Facial Recognition Web Enabled Camera Wiring Diagram")
 
-Adding Cloud Functionality
+Adding Cloud Functionality (feat @rwchinn)
 ------------------------------------------------------------
 
+To configure the device to operate within a cloud environment (in this case, we chose Amazon Web Services), the following commands were utilized in order to ensure ends were met.
+
 Adding Faces to a Collection:
+
 This AWS CLI command displays the JSON output for the index-faces CLI operation.
 Replace the value of collection-id with the name of the collection you want the face to be stored in. Replace the values of Bucket and Name with the Amazon S3 bucket and image file that you used in step 2. The max-faces parameter restricts the number of indexed faces to 1. Remove or change its value to suit your needs.
 ```sh
 aws rekognition index-faces \
-  	--image '{"S3Object":{"Bucket":"chinnbucketfaces","Name":"hunter.jpg"}}' \
-  	--collection-id "chinncollectionfaces" \
+  	--image '{"S3Object":{"Bucket":"bucket","Name":"name.jpg"}}' \
+  	--collection-id "collectionid" \
   	--max-faces 1 \
       --quality-filter "AUTO" \
       --detection-attributes "ALL" \
-      --external-image-id "Hunter"
+      --external-image-id "ImageID"
 ```
 
 Using a JSON file to load attributes:
@@ -71,30 +74,35 @@ aws rekognition index-faces –-cli-input-json file://jsonFileLocation.json
 Uploading Image to S3 Bucket:
 Original image name does not matter. Destination image must be named image01.jpg
 ```sh
-aws s3 cp image03.jpg s3://chinnbucketfacescompare/image01.jpg
+aws s3 cp image03.jpg s3://bucketfacescompare/image01.jpg
 ```
  
 Search Collection For Face By Image:
+
 This AWS CLI command displays the JSON output for the search-faces-by-image CLI operation. Replace the value of Bucket with the S3 bucket that you used in step 2. Replace the value of Name with the image file name that you used in step 2. Replace the value of collection-id with the collection you want to search in.
 ```sh
 aws rekognition search-faces-by-image \
-	--image '{"S3Object":{"Bucket":"chinnbucketfacescompare","Name":"image01.jpg"}}' \
+	--image '{"S3Object":{"Bucket":"bucket2","Name":"image01.jpg"}}' \
     --collection-id "chinncollectionfaces"
 ``` 
 
-List Faces in a Collection
+List Faces in a Collection:
+
 This AWS CLI command displays the JSON output for the list-faces CLI operation. Replace the value of collection-id with the name of the collection you want to list.
 ```sh
 aws rekognition list-faces \
-      --collection-id "chinncollectionfaces" 
+      --collection-id "collectionid" 
 ```
 
-Deleting a Face in a Collection
+Deleting a Face in a Collection:
+
 This AWS CLI command displays the JSON output for the delete-collection CLI operation. Replace the value of collection-id with the name of the collection that contains the face you want to delete. Replace the value of face-ids with an array of face IDs that you want to delete.
 ```sh 
-aws rekognition delete-faces --collection-id "chinncollectionfaces" --face-ids '["fa8f3068-d23f-4bb4-9fc5-a50340c372d9"]'
+aws rekognition delete-faces --collection-id "collectionid" --face-ids '["fa8f3068-d23f-4bb4-9fc5-a50340c372d9"]'
 ```
 
+Wrapping It Up
+-----------------------------------------------------------------
 Though this is only the penultimate step to having the device completely set up, much of the work with regards to the device has already been completed as of this point. In order to see the device in action, simply open up a window in Arduino IDE, and paste the code from sketch.ino in. To guarantee that the imports are fully functional, make sure to have the Temboo Python SDK stored on the root of the SD card (along with ‘upload_picture.py’), before transferring it over to the board. One will also need to have possession of a Temboo account, for the reason that this service is used in order to facilitate the image upload process. The parameters specified to upload_picture.py will vary with respect to what AWS/Temboo account one is on, and hence, have been left as variables for the user to fill in. Furthermore, to satisfy the requirement of making the device web functional, one will also be required to make a folder on the root of the SD card called ‘arduino’, with an inner folder, labeled ‘www’ (where the html file ‘index.html’ will then reside). Once the above conditions have been met, ensure that the correct microcontroller and port are selected under the tools menu, place the microSD card back into the microcontroller, and then proceed to verify/upload the sketch.
 
 
