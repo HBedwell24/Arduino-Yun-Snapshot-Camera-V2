@@ -7,7 +7,7 @@ Materials Checklist
 * [x] Arduino Yun Rev 2
 * [x] Lynxmotion Pan and Tilt Kit
 * [x] Full Sized Breadboard
-* [x] MicroSD Card With a Variable Amount of Memory
+* [x] 4GB MicroSD Card
 * [x] MicroSD to SD Converter
 * [x] UVC Compatible Camera (i.e. Logitech C270)
 * [x] PIR Motion Sensor w/ Three Outward Facing Female Headers
