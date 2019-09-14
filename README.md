@@ -71,7 +71,8 @@ aws rekognition index-faces \
 aws rekognition index-faces –-cli-input-json file://jsonFileLocation.json
 ```
  
-Uploading Image to S3 Bucket:
+### Uploading Image to S3 Bucket
+
 Original image name does not matter. Destination image must be named image01.jpg
 ```sh
 aws s3 cp image03.jpg s3://bucketfacescompare/image01.jpg
