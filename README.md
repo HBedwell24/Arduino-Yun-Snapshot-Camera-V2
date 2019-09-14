@@ -52,7 +52,7 @@ Adding Cloud Functionality (feat. @rwchinn)
 
 To configure the device to operate within a cloud environment (in this case, we chose Amazon Web Services), the following commands were utilized in order to ensure ends were met.
 
-Adding Faces to a Collection:
+### Adding Faces to a Collection
 
 This AWS CLI command displays the JSON output for the index-faces CLI operation.
 Replace the value of collection-id with the name of the collection you want the face to be stored in. Replace the values of Bucket and Name with the Amazon S3 bucket and image file that you used in step 2. The max-faces parameter restricts the number of indexed faces to 1. Remove or change its value to suit your needs.
@@ -66,7 +66,7 @@ aws rekognition index-faces \
       --external-image-id "ImageID"
 ```
 
-Using a JSON file to load attributes:
+### Using a JSON File to Load Attributes
 ```sh
 aws rekognition index-faces –-cli-input-json file://jsonFileLocation.json
 ```
@@ -77,7 +77,7 @@ Original image name does not matter. Destination image must be named image01.jpg
 aws s3 cp image03.jpg s3://bucketfacescompare/image01.jpg
 ```
  
-Search Collection For Face By Image:
+### Search Collection for Face by Image
 
 This AWS CLI command displays the JSON output for the search-faces-by-image CLI operation. Replace the value of Bucket with the S3 bucket that you used in step 2. Replace the value of Name with the image file name that you used in step 2. Replace the value of collection-id with the collection you want to search in.
 ```sh
@@ -86,7 +86,7 @@ aws rekognition search-faces-by-image \
     --collection-id "chinncollectionfaces"
 ``` 
 
-List Faces in a Collection:
+### List Faces in a Collection
 
 This AWS CLI command displays the JSON output for the list-faces CLI operation. Replace the value of collection-id with the name of the collection you want to list.
 ```sh
@@ -94,7 +94,7 @@ aws rekognition list-faces \
       --collection-id "collectionid" 
 ```
 
-Deleting a Face in a Collection:
+### Deleting a Face in a Collection:
 
 This AWS CLI command displays the JSON output for the delete-collection CLI operation. Replace the value of collection-id with the name of the collection that contains the face you want to delete. Replace the value of face-ids with an array of face IDs that you want to delete.
 ```sh 
