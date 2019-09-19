@@ -4,19 +4,23 @@ Revision 2 of the Amazon Web Services integrated web camera, which now features 
 
 Materials Checklist
 ------------------------------------------------------------------
-* [x] Arduino Yun Rev 2
-* [x] Lynxmotion Pan and Tilt Kit
-* [x] Full Sized Breadboard
-* [x] 4GB MicroSD Card
-* [x] MicroSD to SD Converter
-* [x] UVC Compatible Camera (i.e. Logitech C270)
-* [x] PIR Motion Sensor w/ Three Outward Facing Female Headers
-* [x] 5V Battery Pack
-* [x] 4 Rechargeable Batteries
-* [x] A Dozen Female to Male Jumper Wires
-* [x] A Dozen Male to Male Jumper Wires
-* [x] Type B Micro USB Cable
-* [x] 5V DC 2A Wall Adapter
+* [x] Arduino Yun Rev 2 (x1)
+* [x] Lynxmotion Pan and Tilt Kit (x1)
+* [x] Full Sized Breadboard (x1)
+* [x] 4GB MicroSD Card (x1)
+* [x] MicroSD to SD Converter (x1)
+* [x] Logitech C270 (x1)
+* [x] PIR Motion Sensor w/ Three Outward Facing Female Headers (x1)
+* [x] 5V Battery Pack (x1)
+* [x] Rechargeable Batteries (x4)
+* [x] Red Female/Male Jumper Wires (x1)
+* [x] Black Female/Male Jumper Wires (x1)
+* [x] Yellow Female/Male Jumper Wires (x1)
+* [x] Red Male/Male Jumper Wires (x3)
+* [x] Black Male/Male Jumper Wires (x3)
+* [x] Yellwo Male/Male Jumper Wires (x2)
+* [x] Type B Micro USB Cable (x1)
+* [x] 5V DC 2A Wall Adapter (x1)
 
 Configuring the Device
 ------------------------------------------------------------------
