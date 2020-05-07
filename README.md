@@ -2,24 +2,22 @@
 Revision 2 of the Amazon Web Services integrated web camera, which now features the ability to return images captured through the recipients email, not to mention, provide web server functionality, allowing the device to be operated using a public IP address.
 
 ## Table of Contents
-<!--ts-->
 * [Materials Checklist](#materials-checklist)
 * [Configuring the Device](#configuring-the-device)
-      * [Package Manager Update](#package-manager-update)
-      * [UVC Drivers](#uvc-drivers)
-      * [Python OpenSSL Package](#python-openssl-package)
-      * [FSWebcam Utility](#fswebcam-utility)
-      * [MJPG Streaming Library](#mjpg-streaming-library)
+    * [Package Manager Update](#package-manager-update)
+    * [UVC Drivers](#uvc-drivers)
+    * [Python OpenSSL Package](#python-openssl-package)
+    * [FSWebcam Utility](#fswebcam-utility)
+    * [MJPG Streaming Library](#mjpg-streaming-library)
 * [Device Construction](#device-construction)
 * [Enabling Cloud Functionality](#enabling-cloud-functionality)
-      * [Adding Faces to a Collection](#adding-faces-to-a-collection)
-      * [Using a JSON File to Load Attributes](#using-a-json-file-to-load-attributes)
-      * [Uploading Image to S3 Bucket](#uploading-image-to-s3-bucket)
-      * [Search Collection for Face by Image](#search-collection-for-face-by-image)
-      * [List Faces in a Collection](#list-faces-in-a-collection)
-      * [Deleting a Face in a Collection](#deleting-a-face-in-a-collection)
+    * [Adding Faces to a Collection](#adding-faces-to-a-collection)
+    * [Using a JSON File to Load Attributes](#using-a-json-file-to-load-attributes)
+    * [Uploading Image to S3 Bucket](#uploading-image-to-s3-bucket)
+    * [Search Collection for Face by Image](#search-collection-for-face-by-image)
+    * [List Faces in a Collection](#list-faces-in-a-collection)
+    * [Deleting a Face in a Collection](#deleting-a-face-in-a-collection)
 * [Wrapping It Up](#wrapping-it-up)
-<!--te-->
 
 ## Materials Checklist
 * [x] Arduino Yun Rev 2 (x1)
